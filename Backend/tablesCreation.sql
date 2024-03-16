@@ -10,6 +10,7 @@ INSERT INTO category_db (cat_name,cat_image,cat_order) VALUES ('Buisness','https
 INSERT INTO category_db (cat_name,cat_image,cat_order) VALUES ('Programing','https://history-computer.com/wp-content/uploads/2023/03/dynamic-programming-header-scaled.jpg',2);
 INSERT INTO category_db (cat_name,cat_image,cat_order) VALUES ('Civil Engineering','https://discovere.org/wp-content/uploads/2021/10/STEM_Careers_Civil_Engineering-scaled.jpg',3);
 INSERT INTO category_db (cat_name,cat_image,cat_order) VALUES ('Agriculture','https://www.worldbank.org/content/dam/photos/780x439/2022/feb/Paddies-image.jpg',4);
+INSERT INTO category_db (cat_name,cat_image,cat_order) VALUES ();
 
 
 CREATE TABLE quiz_db (
@@ -18,12 +19,19 @@ CREATE TABLE quiz_db (
 	quiz_image text,
 	quiz_desc text,
 	quiz_aun_count int,
+	quiz_order int,
 	quiz_cate_id int REFERENCES category_db(cat_id)	
 )
 
-INSERT INTO quiz_db (quiz_name,quiz_image,quiz_desc,quiz_aun_count,quiz_cate_id) VALUES ('Business analytics','https://emeritus.org/in/wp-content/uploads/sites/3/2023/12/what_is_business_analytics.png','Business analytics is the process of transforming data into insights to improve business decisions. Data management, data visualization, predictive modeling, data mining, forecasting simulation, and optimization are some of the tools used to create insights from data.',4,1);
-INSERT INTO quiz_db (quiz_name,quiz_image,quiz_desc,quiz_aun_count,quiz_cate_id) VALUES ('c++ programming','https://training.digigrowhub.in/wp-content/uploads/2021/02/do-coding-of-any-program-by-c-plus-plus-perfectly-and-within-time.jpg','C++ is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup',6,2);
-INSERT INTO quiz_db (quiz_name,quiz_image,quiz_desc,quiz_aun_count,quiz_cate_id) VALUES ('Python programming','https://ciracollege.com/wp-content/uploads/2020/11/How-to-Learn-Python.jpg','Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional',6,2);
+INSERT INTO quiz_db (quiz_name,quiz_image,quiz_desc,quiz_aun_count,quiz_order,quiz_cate_id) VALUES ('Business analytics','https://emeritus.org/in/wp-content/uploads/sites/3/2023/12/what_is_business_analytics.png','Business analytics is the process of transforming data into insights to improve business decisions. Data management, data visualization, predictive modeling, data mining, forecasting simulation, and optimization are some of the tools used to create insights from data.',4,3,1);
+INSERT INTO quiz_db (quiz_name,quiz_image,quiz_desc,quiz_aun_count,quiz_order,quiz_cate_id) VALUES ('c++ programming','https://training.digigrowhub.in/wp-content/uploads/2021/02/do-coding-of-any-program-by-c-plus-plus-perfectly-and-within-time.jpg','C++ is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup',6,1.2);
+INSERT INTO quiz_db (quiz_name,quiz_image,quiz_desc,quiz_aun_count,quiz_order,quiz_cate_id) VALUES ('Python programming','https://ciracollege.com/wp-content/uploads/2020/11/How-to-Learn-Python.jpg','Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional',6,2,2);
 
 
-
+CREATE TABLE quiz_name (
+	question_id BIGSERIAL PRIMARY KEY,
+	question text,
+	aun_1 varchar(255),
+	correct_aun varchar(255),
+	question_quiz_id int REFERENCES quiz_db(quiz_id)	
+)
